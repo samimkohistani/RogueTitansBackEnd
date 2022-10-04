@@ -31,6 +31,16 @@ mongoose.connection
 .on("error", (error) => console.log(error));
 
 
+// MODELS
+////////////////////////////////
+const characterSchema = new mongoose.Schema({
+    name: String,
+    image: String
+});
+
+const character = mongoose.model("character", characterSchema);
+
+
 // MiddleWare
 ////////////////////////////////
 app.use(cors()); // to prevent cors errors, open access to all origins
@@ -42,4 +52,17 @@ app.use(express.json()); // parse json bodies
 // create a test route
 app.get("/", (req, res) => {
     res.send("Tavern");
+  });
+
+
+  
+// Character INDEX ROUTE
+app.get("/character", async (req, res) => {
+    try {
+      // send all characters
+      res.json(await character.find({}));
+    } catch (error) {
+      //send error
+      res.status(400).json(error);
+    }
   });
