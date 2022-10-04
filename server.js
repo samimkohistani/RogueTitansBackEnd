@@ -88,3 +88,15 @@ app.delete("/character/:id", async (req, res) => {
       res.status(400).json(error);
     }
   });
+
+  //UPDATE ROUTE
+app.put("/character/:id", async (req, res) => {
+    try {
+      res.json(
+        await character.findByIdAndUpdate(req.params.id, req.body, { new: true })
+      );
+    } catch (error) {
+      //send error
+      res.status(400).json(error);
+    }
+  });
