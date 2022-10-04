@@ -66,3 +66,15 @@ app.get("/character", async (req, res) => {
       res.status(400).json(error);
     }
   });
+  
+
+// CREATE ROUTE
+app.post("/character", async (req, res) => {
+    try {
+      // send all characters
+      res.json(await character.create(req.body));
+    } catch (error) {
+      //send error
+      res.status(400).json(error);
+    }
+  });
