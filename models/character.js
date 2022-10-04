@@ -1,10 +1,13 @@
 const { default: mongoose } = require("mongoose");
 
+
 const characterSchema = new mongoose.Schema({
+    index: String,
     name: String,
-    image: String
+    url: String
 });
 
-const character = mongoose.model("character", characterSchema);
 
+const character = mongoose.model("character", characterSchema);
 module.exports = Content;
+

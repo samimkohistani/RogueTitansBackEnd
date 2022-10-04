@@ -34,8 +34,9 @@ mongoose.connection
 // MODELS
 ////////////////////////////////
 const characterSchema = new mongoose.Schema({
-    name: String,
-    image: String
+  index: String,
+  name: String,
+  url: String,
 });
 
 const character = mongoose.model("character", characterSchema);
